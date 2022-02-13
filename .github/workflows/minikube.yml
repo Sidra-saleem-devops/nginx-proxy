@@ -19,13 +19,5 @@ jobs:
       - name: Interact with the cluster
         run: kubectl get nodes
       - name: 'Deploy'
-        uses: helm/chart-releaser-action@v1.1.0
-        with:
-          token: ${{ github.token }}
-          chart: nginx-proxy
-          release: nginx-proxy
-          value-files: './helm-chart/values.yml'
-        env:
-          KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: helm install nginx-proxy nginx-proxy -f ./nginx-proxy/helm-chart/values.yaml
 
