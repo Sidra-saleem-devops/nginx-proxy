@@ -19,7 +19,7 @@ jobs:
       - name: Interact with the cluster
         run: kubectl get nodes
       - name: 'Deploy'
-        run: helm install nginx-proxy ./helm-chart -f ./nginx-proxy/helm-chart/values.yaml
+        run: helm install nginx-proxy ./helm-chart -f ./helm-chart/values.yaml
         env:
           KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
       - name: check deployment
