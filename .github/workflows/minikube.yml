@@ -27,4 +27,5 @@ jobs:
           value-files: './helm-chart/values.yml'
         env:
           KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
