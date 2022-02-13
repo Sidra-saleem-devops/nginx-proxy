@@ -3,7 +3,7 @@ name: Minikube workflow
 on: [push]
 
 jobs:
-  example:
+  create_cluster:
     name: Minikube-Kubernetes Cluster interaction
     runs-on: ubuntu-latest
     steps:
@@ -18,3 +18,13 @@ jobs:
           start args: minikube start
       - name: Interact with the cluster
         run: kubectl get nodes
+      - name: 'Deploy'
+        uses: 'deliverybot/helm@master'
+        with:
+          token: '${{ github.token }}'
+          chart: 'nginx-proxy'
+          release: nginx-proxy
+          value-files: './helm-chart/values.yml'
+        env:
+          KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
+
