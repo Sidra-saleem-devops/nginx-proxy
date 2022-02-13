@@ -19,10 +19,10 @@ jobs:
       - name: Interact with the cluster
         run: kubectl get nodes
       - name: 'Deploy'
-        uses: 'deliverybot/helm@master'
+        uses: deliverybot/helm@master
         with:
-          token: '${{ github.token }}'
-          chart: 'nginx-proxy'
+          token: ${{ github.token }}
+          chart: nginx-proxy
           release: nginx-proxy
           value-files: './helm-chart/values.yml'
         env:
