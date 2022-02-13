@@ -19,7 +19,7 @@ jobs:
       - name: Interact with the cluster
         run: kubectl get nodes
       - name: 'Deploy'
-        uses: deliverybot/helm@v1
+        uses: helm/chart-releaser-action@v1.1.0
         with:
           token: ${{ github.token }}
           chart: nginx-proxy
